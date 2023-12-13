@@ -100,10 +100,12 @@ footer.footer {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   position: relative;
+  padding: 0 0 0;
 }
 .footer:before {
   content: '';
-  position: absolute;
+  position: relative;
+  padding: 0 0 0;
   top: 0;
   left: 0;
   width: 100%;

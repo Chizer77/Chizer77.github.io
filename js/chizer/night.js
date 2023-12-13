@@ -9,9 +9,13 @@
   function applyNight(value) {
       if (value.toString() === 'true') {
           document.body.classList.remove('light');
+          // //转换游鱼
+          // fishNight();
           document.body.classList.add('night');
       } else {
           document.body.classList.remove('night');
+          // //转换游鱼
+          // fishLight();
           document.body.classList.add('light');
       }
   }
