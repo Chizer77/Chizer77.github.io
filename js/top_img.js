@@ -2,7 +2,7 @@
 /**
  * @description 实现medium的渐进加载背景的效果
  */
-class ProgressiveLoad {
+class TopImgLoad {
     constructor(smallSrc, largeSrc) {
         this.smallSrc = smallSrc;
         this.largeSrc = largeSrc;
@@ -40,7 +40,8 @@ class ProgressiveLoad {
      */
     _onLargeLoaded() {
         this.largeStage.classList.add('pl-visible');
-        this.largeStage.style.backgroundImage = `url('${this.largeSrc}')`;
+
+        this.largeStage.style.backgroundImage = `url(\'` + this.largeSrc + `\')`;
     }
 
     /**
@@ -48,14 +49,16 @@ class ProgressiveLoad {
      */
     _onSmallLoaded() {
         this.smallStage.classList.add('pl-visible');
-        this.smallStage.style.backgroundImage = `url('${this.smallSrc}')`;
+
+        // <div style="background-image: url('img_girl.jpg');">
+        this.smallStage.style.backgroundImage = `url(\'` + this.smallSrc + `\')`;
     }
 }
 
 const executeLoad = (config, target) => {
     console.log('执行渐进背景替换');
     const isMobile = window.matchMedia('(max-width: 767px)').matches;
-    const loader = new ProgressiveLoad(
+    const loader = new TopImgLoad(
         isMobile ? config.mobileSmallSrc : config.smallSrc,
         isMobile ? config.mobileLargeSrc : config.largeSrc
     );
@@ -67,31 +70,31 @@ const executeLoad = (config, target) => {
 };
 
 const config = {
-    smallSrc: '../img/favicon.png', // 小图链接 尽可能配置小于100k的图片
-    largeSrc: '../img/friend_404.gif', // 大图链接 最终显示的图片
-    mobileSmallSrc: '../img/favicon.png', // 手机端小图链接 尽可能配置小于100k的图片
-    mobileLargeSrc: '../img/friend_404.gif', // 手机端大图链接 最终显示的图片
-    enableRoutes: ['/'],
+    smallSrc: `../img/avatar.png`, // 小图链接 尽可能配置小于100k的图片
+    largeSrc: `../img/avatar.png`, // 大图链接 最终显示的图片
+    mobileSmallSrc: `../img/avatar.png`, // 手机端小图链接 尽可能配置小于100k的图片
+    mobileLargeSrc: `../img/avatar.png`, // 手机端大图链接 最终显示的图片
+    // enableRoutes: ['/'],
 };
 
-function initProgressiveLoad(config) {
-    const target = document.getElementById('page-header');
-    if (target && target.classList.contains('full_page')) {
+function initTopImgLoad(config) {
+    const target = document.getElementById('full-page');
+    if (target) {
         executeLoad(config, target);
     }
 }
 
 function onPJAXComplete(config) {
-    const target = document.getElementById('page-header');
-    if (target && target.classList.contains('full_page')) {
-        initProgressiveLoad(config);
-    }
+    // const target = document.getElementById('page-header');
+    // if (target && target.classList.contains('full_page')) {
+        initTopImgLoad(config);
+    // }
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    initProgressiveLoad(config);
+    initTopImgLoad(config);
 });
 
 document.addEventListener("pjax:complete", function() {
-    onPJAXComplete(config);
+    initTopImgLoad(config);
 });
