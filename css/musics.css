@@ -1,0 +1,33 @@
+.musics-container {
+  overflow: visible;
+  transition: background-color 0.5s ease;
+  background-color: rgba(255,255,255,0.95);
+  transition: opacity 0.3s ease-out 0s, transform 0.3s ease-out 0s;
+  opacity: 1;
+  transform-origin: center top;
+  width: 100px;
+  height: 100px;
+}
+.musics-container:hover {
+  background-color: #fff;
+}
+.musics-container.card-transparent {
+  background-color: transparent !important;
+}
+.musics-container.card-transparent .level-start,
+.musics-container.card-transparent .level-end {
+  overflow: hidden;
+}
+@media screen and (min-width: screen-tablet) {
+  .musics-container .column-main.is-sticky,
+  .musics-container .column-left.is-sticky,
+  .musics-container .column-right.is-sticky,
+  .musics-container .column-right-shadow.is-sticky {
+    top: 70px;
+  }
+  .musics-container .navbar {
+    z-index: 100;
+    position: sticky;
+    top: 0;
+  }
+}

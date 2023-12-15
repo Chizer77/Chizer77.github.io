@@ -11696,13 +11696,13 @@ body {
 body:before {
   content: '';
   position: fixed;
-  z-index: -1;
+  z-index: 0;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  opacity: 0.3;
-  background: url("/img/cute.webp") repeat;
+  opacity: 1;
+  background: url("/img/bg.png") no-repeat;
 }
 .navbar {
   background-color: rgba(255,255,255,0.7);
@@ -17273,109 +17273,37 @@ body.night .twikoo code {
     opacity: 0;
   }
 }
-.pl-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  will-change: transform; /* 添加性能优化 */
-  animation: blur-to-clear 2s cubic-bezier(0.62, 0.21, 0.25, 1) 0s 1 normal backwards running, scale 1.5s cubic-bezier(0.62, 0.21, 0.25, 1) 0s 1 both;
-}
-.pl-img {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 0;
-  transition: opacity 1s;
-}
-.pl-visible {
+.musics-container {
+  overflow: visible;
+  transition: background-color 0.5s ease;
+  background-color: rgba(255,255,255,0.95);
+  transition: opacity 0.3s ease-out 0s, transform 0.3s ease-out 0s;
   opacity: 1;
+  transform-origin: center top;
+  width: 100px;
+  height: 100px;
 }
-.pl-blur {
-/* 小图锯齿多，增加高斯模糊 */
-  filter: blur(50px);
+.musics-container:hover {
+  background-color: #fff;
 }
-@-moz-keyframes blur-to-clear {
-  0% {
-    filter: blur(50px);
-    opacity: 1;
-  }
-  100% {
-    filter: blur(0);
-    opacity: 1;
-  }
+.musics-container.card-transparent {
+  background-color: transparent !important;
 }
-@-webkit-keyframes blur-to-clear {
-  0% {
-    filter: blur(50px);
-    opacity: 1;
-  }
-  100% {
-    filter: blur(0);
-    opacity: 1;
-  }
+.musics-container.card-transparent .level-start,
+.musics-container.card-transparent .level-end {
+  overflow: hidden;
 }
-@-o-keyframes blur-to-clear {
-  0% {
-    filter: blur(50px);
-    opacity: 1;
+@media screen and (min-width: 769px) {
+  .musics-container .column-main.is-sticky,
+  .musics-container .column-left.is-sticky,
+  .musics-container .column-right.is-sticky,
+  .musics-container .column-right-shadow.is-sticky {
+    top: 70px;
   }
-  100% {
-    filter: blur(0);
-    opacity: 1;
-  }
-}
-@keyframes blur-to-clear {
-  0% {
-    filter: blur(50px);
-    opacity: 1;
-  }
-  100% {
-    filter: blur(0);
-    opacity: 1;
-  }
-}
-@-moz-keyframes scale {
-  0% {
-    transform: scale(1.5) translateZ(0);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1) translateZ(0);
-    opacity: 1;
-  }
-}
-@-webkit-keyframes scale {
-  0% {
-    transform: scale(1.5) translateZ(0);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1) translateZ(0);
-    opacity: 1;
-  }
-}
-@-o-keyframes scale {
-  0% {
-    transform: scale(1.5) translateZ(0);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1) translateZ(0);
-    opacity: 1;
-  }
-}
-@keyframes scale {
-  0% {
-    transform: scale(1.5) translateZ(0);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1) translateZ(0);
-    opacity: 1;
+  .musics-container .navbar {
+    z-index: 100;
+    position: sticky;
+    top: 0;
   }
 }
 body {

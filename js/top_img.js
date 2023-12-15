@@ -91,10 +91,13 @@ function onPJAXComplete(config) {
     // }
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+(function () {
     initTopImgLoad(config);
-});
-
-document.addEventListener("pjax:complete", function() {
-    initTopImgLoad(config);
-});
+}());
+// document.addEventListener("DOMContentLoaded", function() {
+//
+// });
+//
+// document.addEventListener("pjax:complete", function() {
+//     initTopImgLoad(config);
+// });
